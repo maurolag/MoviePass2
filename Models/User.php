@@ -9,8 +9,10 @@ class User
         private $birthdate;
         private $gender;
         private $address;
+        private $isAdmin;
+        private $changedPassword;
 
-        public function __construct($email, $user, $password, $birthdate, $gender, $address)
+        public function __construct($email, $user, $password, $birthdate, $gender)
         {
                 $this->email = $email;
                 $this->user = $user;
@@ -75,6 +77,46 @@ class User
         public function setPassword($password)
         {
                 $this->password = $password;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of isAdmin
+         */ 
+        public function getIsAdmin()
+        {
+                return $this->isAdmin;
+        }
+
+        /**
+         * Set the value of isAdmin
+         *
+         * @return  self
+         */ 
+        public function setIsAdmin($isAdmin)
+        {
+                $this->isAdmin = $isAdmin;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of changedPassword
+         */ 
+        public function getChangedPassword()
+        {
+                return $this->changedPassword;
+        }
+
+        /**
+         * Set the value of changedPassword
+         *
+         * @return  self
+         */ 
+        public function setChangedPassword($changedPassword)
+        {
+                $this->changedPassword = $changedPassword;
 
                 return $this;
         }

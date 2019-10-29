@@ -2,6 +2,7 @@
 
 namespace DAO;
 
+use Controllers\BaseController;
 use \Exception as Exception;
 use DAO\IUserDAO as IUserDAO;
 use Models\User as User;
@@ -31,8 +32,8 @@ class UserDAO implements IUserDAO
 
     public function Register(User $user)
     {
-        $query = "INSERT INTO " . $this->tableName . " (UserName,Email,UserPassword,IdGender,BirthDate,IdAddress)
-        VALUES (:user, :email, :password, :gender, :birthdate, :Address);";
+        $query = "INSERT INTO " . $this->tableName . " (UserName,Email,UserPassword,IdGender,BirthDate,IdAddress,IsAdmin,ChangedPassword)
+        VALUES (:user, :email, :password, :gender, :birthdate, :Address,0,0);";
 
         $parameters["user"] = $user->getUser();
         $parameters["email"] = $user->getEmail();
@@ -43,6 +44,11 @@ class UserDAO implements IUserDAO
 
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query, $parameters);
+
+        $user->setIsAdmin(false);
+        $user->setChangedPassword(false);
+        
+        return $user;
     }
 
     public function SearchUserByEmail($email)

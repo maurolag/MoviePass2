@@ -22,4 +22,14 @@ abstract class BaseController
             mt_rand(0, $max)};
         return $key;
     }
+
+    public static function Hash($string)
+    {
+        return hash('sha1',$string,false);
+    }
+
+    public function ShowHomeView()
+    {
+        require_once(VIEWS_PATH."HomeView.php");
+    }
 }

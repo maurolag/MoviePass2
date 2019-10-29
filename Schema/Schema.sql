@@ -164,6 +164,8 @@ create table Users (
     IdAddress int not null,
     IdGender int not null,
     Birthdate date,
+	IsAdmin bit,
+	ChangedPassword bit,
     constraint Pk_Users primary key (IdUser),
     constraint Fk_Address foreign key (IdAddress)
         references Addresses (IdAddress),

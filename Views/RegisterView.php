@@ -9,13 +9,13 @@ use DAO\Gender as Gender;
             <div class="row justify-content-center">
                 <div id="formBox" class="col-md-5">
                     <h1 id="mainTitle"><i class="fas fa-ticket-alt"></i>&nbspMoviePass</h1>
-                    <form action="<?php echo FRONT_ROOT ?>User/RegisterWithFacebookHandler" method="post">
+                    <form action="<?php echo FRONT_ROOT ?>Register/RegisterWithFacebookHandler" method="post">
                         <button id="facebook" type="submit" name="button" class="btn btn-bg btn-primary"><i class="fab fa-facebook-square"></i>&nbspRegistrarme con Facebook</button>
                     </form>
                     <hr>
                     <h2 class="subtitle">Registrarme con mi Email</h2>
-                    <span><?php if(isset($alertMessage))echo $alertMessage?></span>
-                    <form action="<?php echo FRONT_ROOT ?>User/RegisterHandler" method="post">
+                    <?php require_once("alertMessage.php")?>
+                    <form action="<?php echo FRONT_ROOT ?>Register/Index" method="post">
                         <div class="RegisterBox">
                             <div class="textbox">
                                 <i class="fas fa-user"></i>
@@ -55,7 +55,7 @@ use DAO\Gender as Gender;
                         </div>
                     </form>
 
-                    <form action="<?php echo FRONT_ROOT ?>User/ShowLoginView" method="post">
+                    <form action="<?php echo FRONT_ROOT ?>Login/View" method="post">
                         <div>
                             <p>Ya tenes una cuenta?<button id="logInLink" type="submit" class="bg-light-alpha"> Iniciar Sesion</button></p>
                         </div>

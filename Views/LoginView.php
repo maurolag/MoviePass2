@@ -6,7 +6,7 @@
                          <h1 id="mainTitle"><i class="fas fa-ticket-alt"></i>&nbspMoviePass</h1>
                          <hr>
                          <br>
-                         <form action="<?php echo FRONT_ROOT ?>User/LogInHandler" method="post">
+                         <form action="<?php echo FRONT_ROOT ?>Login/Index" method="post">
                               <div class="login-box">
                                    <div class="textbox">
                                         <i class="fas fa-user"></i>
@@ -17,16 +17,16 @@
                                         <i class="fas fa-lock"></i>
                                         <input type="password" required placeholder="Contraseña" name="pass" value="">
                                    </div>
-                                   <span id="alertLogin" class="alert alert-danger"><?php if (isset($alertMessage)) echo $alertMessage ?></span>
-                                   <button id="loginBtn" type="submit" name="button">Entrar</button>
-                                   <a id="forgotPassword" href="<?php echo FRONT_ROOT ?>User/ShowForgotPasswordView"> Olvidaste tu contraseña?</a>
+                                   <?php require_once("alertMessage.php")?>
+                                   <button id="loginBtn" type="submit" name="button">Entrar</button>                                   
                               </div>
                          </form>
                          <hr />
-                         <form action="<?php echo FRONT_ROOT ?>User/LogInWithFacebookHandler" method="post">
+                         <form action="<?php echo FRONT_ROOT ?>Login/LogInWithFacebookHandler" method="post">
                               <button id="facebook" type="submit" name="button" class="btn btn-bg btn-primary"><i class="fab fa-facebook-square"></i>&nbspIniciar Sesion con Facebook</button>
                          </form>
-                         <p>No tenes una cuenta?<a id="registerLink" href="<?php echo FRONT_ROOT ?>User/ShowRegisterView"> Registrarme en MoviePass</a></p>
+                         <a id="forgotPassword" href="<?php echo FRONT_ROOT ?>Login/ShowForgotPasswordView"> Olvidaste tu contraseña?</a>
+                         <p>No tenes una cuenta?<a id="registerLink" href="<?php echo FRONT_ROOT ?>Register/View"> Registrarme en MoviePass</a></p>
                          <small id="condiciones">Si haces click en "Registrarme con Facebook" y no sos usuario de MoviePass, automaticamente<br>vas a
                               estar aceptando los terminos y condiciones de la politica de privacidad de MoviePass
                          </small>
@@ -35,17 +35,6 @@
           </div>
      </section>
 </main>
-<script>
-     $(document).ready(function() {
-
-          validateAlert("alertLogin", <?php if (isset($alertMessage)) {
-                                             echo "'" . $alertMessage . "'";
-                                        } else {
-                                             echo "''";
-                                        } ?>)
-
-     });
-</script>
 <style>
      hr {
           border: none;
@@ -160,11 +149,5 @@
      #condiciones {
           font-size: 62%;
           font-weight: 400;
-     }
-
-     #alertLogin {
-          display: block;
-          width: 80%;
-          margin-top: 2%;
      }
 </style>
