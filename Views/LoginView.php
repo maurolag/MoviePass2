@@ -35,6 +35,7 @@
           </div>
      </section>
 </main>
+
 <style>
      hr {
           border: none;

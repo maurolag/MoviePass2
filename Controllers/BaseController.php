@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use API\APIController as ApiController;
+
 abstract class BaseController
 {
 
@@ -25,11 +27,18 @@ abstract class BaseController
 
     public static function Hash($string)
     {
-        return hash('sha1',$string,false);
+        return hash('sha1', $string, false);
     }
 
     public function ShowHomeView()
     {
-        require_once(VIEWS_PATH."HomeView.php");
+        require_once(VIEWS_PATH . "HomeView.php");
+    }
+
+    public function HomologatesApiResponse($ApiRequest)
+    {
+        $arrayReque = array("api_key" => API_KEY, "language" => LANGUAGE_ES);
+        $get_data = APIController::callAPI('GET', API_MAIN_LINK . $ApiRequest, $arrayReque);
+        return json_decode($get_data, true);
     }
 }
