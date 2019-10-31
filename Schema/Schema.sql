@@ -128,6 +128,7 @@ create table MoviesXActor (
 
 create table Movies (
     IdMovie int AUTO_INCREMENT,
+    IdMovieIMDB int,
     MovieName varchar(250) not null,
     Duration time,
     Synopsis varchar(800),
@@ -138,6 +139,7 @@ create table Movies (
     Earnings decimal(15 , 2 ),
     Budget decimal(15 , 2 ),
     IdClasification int,
+    IsPlaying boolean,
     constraint Pk_Movies primary key (IdMovie),
     constraint Fk_Director foreign key (IdDirector)
         references Directors (IdDirector),

@@ -58,7 +58,7 @@
                             <p class="card-text">Vea la lista completa de películas en cartelera.</p>
                         </div>
                         <div class="card-body">
-                            <a href="#" class="btn btn-primary btn-block">Ver Cartelera</a>
+                            <a href="<?php echo FRONT_ROOT ?>Movies/ShowApiMovies" class="btn btn-primary btn-block">Ver Cartelera</a>
                         </div>
                     </div>
                 </div>
