@@ -16,8 +16,8 @@ class Mail
         $mail->isSMTP();
         $mail->Host = 'ssl://smtp.gmail.com:465'; //tls://smtp.gmail.com:587
         $mail->SMTPAuth = true;
-        $mail->Username = MAIL_MP;
-        $mail->Password = MAIL_PASS;
+        $mail->Username = 'InfoMoviePass@gmail.com';
+        $mail->Password = 'MoviePassThe1';
         $mail->Port = '465'; //587
         $mail->SMTPSecure = 'ssl'; //tls
 
@@ -56,20 +56,5 @@ class Mail
             return true;
         else
             return false;
-    }
-
-    public static function SendContactMail($subject,$email,$name,$lastName,$description)
-    {
-        $mail = Mail::InitMail(MAIL_MP);
-
-        $mail->header = 'Mensaje del Usuario:  ';
-        $mail->Subject = $subject ;
-        $mail->Body = "Nombre: " . $name . "<br>Apellido: " . $lastName ."<br>Email". $email. "<br>Consulta: " . $description;
-
-        if ($mail->send())
-        return true;
-    else
-        return false;
-
     }
 }

@@ -12,10 +12,10 @@ use DAO\Gender as Gender;
             </div>
             <!-- form -->
             <div class="col-md-10">
-                <form action="<?php echo FRONT_ROOT ?>Profile/UpdateData" method="post">
+                <form action="<?php echo FRONT_ROOT ?>Profile/Index" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-12 text-center">
-                            <img id="imgProfile" src="img/profileej.png" alt="Avatar" height="120" width="120">
+                            <img id="imgProfile" src="<?php echo FRONT_ROOT.VIEWS_PATH?>img/profileej.png" alt="Avatar" height="120" width="120">
                         </div>
                         <div class="form-group col-md-12 text-center">
                             <button type="button" class="btn btn-dark"><i class="fas fa-upload"></i></i>&nbspCambiar Imagen</button>
@@ -92,7 +92,7 @@ use DAO\Gender as Gender;
 <style>
     #box {
         margin-top: 2%;
-        min-height: 80vh !important;
+        min-height: 85vh !important;
         border-radius: 25px;
     }
 

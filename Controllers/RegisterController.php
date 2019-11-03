@@ -8,8 +8,6 @@ use DAO\UserDAO as UserDAO;
 use Exception;
 use Models\User as User;
 
-use function PHPSTORM_META\type;
-
 class RegisterController extends BaseController
 {
     private $userDAO;
@@ -33,7 +31,7 @@ class RegisterController extends BaseController
 
             try {
                 $password = BaseController::Hash($password); //hashing password
-                $_SESSION['User'] = $this->userDAO->Register(new User($email, $user, $password, $birthdate, $gender, null));
+                $_SESSION['User'] = $this->userDAO->Register(new User($email, $user, $password, $birthdate, $gender));
                 $_SESSION['isLoged'] = true;
                 $this->ShowHomeView();
             } catch (Exception $e) {

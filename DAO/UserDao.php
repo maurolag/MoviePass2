@@ -26,9 +26,9 @@ class UserDAO implements IUserDAO
         $this->connection = Connection::GetInstance();
         $result = $this->connection->Execute($query, $parameters, QueryType::Query);
 
-        if ($result != null)
+        if ($result != null) {
             return $result;
-        else
+        } else
             return null;
     }
 
@@ -88,6 +88,11 @@ class UserDAO implements IUserDAO
         $parameters["email"] = $user->getEmail();
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query, $parameters);
+
+        $result = array();
+        
+
+        return $this->SearchUserByEmail($user->getEmail());
     }
 
     public function GetAll()
@@ -96,7 +101,5 @@ class UserDAO implements IUserDAO
     }
 
     public function Add(User $user)
-    {
-        
-    }
+    { }
 }

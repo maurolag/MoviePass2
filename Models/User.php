@@ -8,18 +8,16 @@ class User
         private $password;
         private $birthdate;
         private $gender;
-        private $address;
         private $isAdmin;
         private $changedPassword;
 
-        public function __construct($email, $user, $password, $birthdate, $gender, $address)
+        public function __construct($email, $user, $password, $birthdate, $gender)
         {
                 $this->email = $email;
                 $this->user = $user;
                 $this->password = $password;
                 $this->birthdate = $birthdate;
                 $this->gender = $gender;
-                $this->address = $address;
         }
 
         /**
@@ -52,14 +50,6 @@ class User
         public function getGender()
         {
                 return $this->gender;
-        }
-
-        /**
-         * Get the value of address
-         */ 
-        public function getAddress()
-        {
-                return $this->address;
         }
 
         /**

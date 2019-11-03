@@ -15,14 +15,9 @@ define("API_MAIN_LINK","https://api.themoviedb.org/3");
 define("IMG_LINK","https://image.tmdb.org/t/p/w185");
 
 define("DB_HOST", "localhost");
-define("DB_NAME", "MoviePassdb");
+define("DB_NAME", "moviepassdb");
 define("DB_USER", "root");
 define("DB_PASS", "");
-
-//MAIL INFO
-
-define("MAIL_MP", "InfoMoviePass@gmail.com" );
-define("MAIL_PASS", "MoviePassThe1");
 ?>
 
 

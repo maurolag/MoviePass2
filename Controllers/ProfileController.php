@@ -20,7 +20,7 @@ class ProfileController extends BaseController
         require_once(VIEWS_PATH . "ProfileView.php");
     }
 
-    public function UpdateData(){
+    public function Index(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = new User($_SESSION['User']['Email'],
                              $this->ValidateData($_POST["UserName"]),
