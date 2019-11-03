@@ -64,7 +64,7 @@ class Mail
 
         $mail->header = 'Mensaje del Usuario:  ';
         $mail->Subject = $subject ;
-        $mail->Body = "Nombre: " . $name . "<br>Apellido: " . $lastName ."<br>Email". $email. "<br>Consulta: " . $description;
+        $mail->Body = "Nombre: " . $name . "<br>Apellido: " . $lastName ."<br>Email: " . $email. "<br>Consulta: " . $description;
 
         if ($mail->send())
         return true;
