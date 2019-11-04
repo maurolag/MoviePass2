@@ -5,6 +5,7 @@ namespace Controllers;
 use DAO\MoviesDAO as MoviesDAO;
 use Models\Movies as Movies;
 use Exception;
+use API\IMDBController as IMDBController;
 
 
 require_once("BaseController.php");
@@ -29,7 +30,7 @@ class MoviesController extends BaseController
 		while(count($movieList)==0){
 			$movieList= $this->getNowPlayingMoviesInfoFromApi(++$page);
 		}
-		require_once(VIEWS_PATH . "moviesPlayingView.php");
+		require_once(VIEWS_PATH . "AdminMoviesPlayingView.php");
 	}
     
     public function GetNowPlayingMoviesFromApi()
@@ -78,6 +79,61 @@ class MoviesController extends BaseController
 			}
 		}
 		return $apiMovie;
+	}
+
+	public function AddMovieToDatabase()
+	{
+
+		if($_GET['IdMovieIMDB'] != null){
+			
+			$idMovieIMDB = $_GET['IdMovieIMDB'];
+		}
+		else{
+			$idMovieIMDB = 0;
+		}
+
+
+		if($this->moviesDAO->getByIdMovieIMDB($idMovieIMDB) == NULL)
+		{
+			$movies = $this->getInfoMovieApi($idMovieIMDB);
+			$this->moviesDAO->add($movies);
+			return true;
+		}
+
+		//require_once a la vista de agregar funciones
+		return false;
+	}
+
+	private function getInfoMovieApi($idMovieIMDB)
+	{
+		$arrayReque = array("api_key" => API_KEY, "language" => LANGUAGE_ES);
+
+		$get_data = IMDBController::callAPI('GET', API_MAIN_LINK . '/movie'. '/' . $idMovieIMDB, $arrayReque);
+		$arrayToDecode = json_decode($get_data, true);
+
+		$movies = new Movies();
+
+		$movies->setIdMovieIMDB($arrayToDecode["id"]);
+				
+		if($arrayToDecode["poster_path"] != NULL)
+		{
+			$posterPath = "https://image.tmdb.org/t/p/w500".$arrayToDecode["poster_path"];
+		}
+		else 
+		{
+			$arrayToDecode = IMG_PATH."noImage.jpg";
+		}
+	
+		$movies->setPhoto($posterPath);
+		$movies->setMovieName($arrayToDecode["title"]);
+		$movies->setReleaseDate($arrayToDecode["release_date"]);
+
+		return $movies;
+	}
+
+	public function ShowDataBaseMovies(){
+		$movieList = $this->moviesDAO->getAll();
+		require_once(VIEWS_PATH . "MoviesPlayingView.php");
 	}
 
 }

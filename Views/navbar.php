@@ -16,7 +16,7 @@
             <a class="nav-link" href="#"><i class="fas fa-home"></i>&nbspInicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-film"></i>&nbspCartelera</a>
+            <a class="nav-link" href="<?php echo FRONT_ROOT ?>Movies/ShowDataBaseMovies"><i class="fas fa-film"></i>&nbspCartelera</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-id-card"></i>&nbspContacto</a>

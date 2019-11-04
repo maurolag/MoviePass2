@@ -42,12 +42,14 @@
             <div class="flip-card movieBoxes">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                  <img src= "<?php echo $movies->getPhoto()?>"" alt="Avatar" style="width:100%;height:100%;">
+                  <img src= "<?php echo $movies->getPhoto()?>" alt="Avatar" style="width:100%;height:100%;">
                 </div>
                 <div class="flip-card-back">
                   <h1> <?php echo $movies->getMovieName(); ?> </h1> 
                   <p><?php echo $movies->getReleaseDate(); ?></p> 
-                  <p><a id="buyTicket" href = "#"></a><button class="button">Comprar</a><i class="fas fa-ticket-alt"></i></button></p>
+                  <p><a id="addMovie" href = "<?php echo FRONT_ROOT ?>Movies/AddMovieToDatabase?IdMovieIMDB=<?php echo $movies->getIdMovieIMDB(); ?>"></a><button id="add" class="button">Agregar</a></button></p>
+                  <p><a id="editMovie" href = "#"></a><button id="edit" class="button">Editar</a></button></p>
+                  <p><a id="removeMovie" href = "#"></a><button id="remove" class="button">Eliminar</a></button></p>
                 </div>
               </div>
             </div>
@@ -170,8 +172,8 @@ h1{
     border-radius: 25px;
     border: 4px solid white;
     padding: 5px;
-	margin-top: 17%;
-	margin-left: 36%;
+	  margin-top: 17%;
+	  margin-left: 36%;
 }
 
 #inputSearch{
@@ -265,17 +267,27 @@ h1{
 }  
 
 textbox {
-          width: 70%;
-          overflow: hidden;
-          font-size: 15px;
-          padding: 8px 0;
-          margin-bottom: 5%;
-          border-bottom: 1px solid white;
-     }
+  width: 70%;
+  overflow: hidden;
+  font-size: 15px;
+  padding: 8px 0;
+  margin-bottom: 5%;
+  border-bottom: 1px solid white;
+  float: right;
+}
 	 
  
 .custom-select{
 	width: 25%;
+  float: right;
+}
+
+#edit{
+  background-color: #FF851B;
+}
+
+#remove{
+  background-color: #FF4136;
 }
 </style>
 </html>

@@ -1,7 +1,7 @@
 <?php
 	namespace Models;
 
-	class MovieGenders
+	class Genre
 	{
 		private $id;
 		private $name;

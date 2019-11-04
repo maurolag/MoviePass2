@@ -85,20 +85,20 @@ create table Directors (
         references Countries (IdCountry)
 );
 
-create table Genders (
-    IdGender int AUTO_INCREMENT,
-    GenderName varchar(50) not null,
-    constraint Pk_Genders primary key (IdGender)
+create table Genres (
+    IdGenre int AUTO_INCREMENT,
+    GenreName varchar(50) not null,
+    constraint Pk_Genres primary key (IdGenre)
 );
 
-create table MoviesXGender (
+create table MoviesXGenre (
     IdMovie int,
-    IdGender int,
-    constraint Pk_MoviesXGender primary key (IdMovie , IdGender),
+    IdGenre int,
+    constraint Pk_MoviesXGenre primary key (IdMovie , IdGenre),
     constraint Fk_Movie foreign key (IdMovie)
         references Movies (IdMovie),
-    constraint Fk_Gender foreign key (IdGender)
-        references Genders (IdGender)
+    constraint Fk_Genre foreign key (IdGenre)
+        references Genres (IdGenre)
 );
 
 create table Actors (
@@ -130,23 +130,23 @@ create table Movies (
     IdMovie int AUTO_INCREMENT,
     IdMovieIMDB int,
     MovieName varchar(250) not null,
-    Duration time,
-    Synopsis varchar(800),
+    /*Duration time,
+    Synopsis varchar(800),*/
     ReleaseDate date,
-    Photo text,
-    IdDirector int not null,
+    Photo varchar(200) DEFAULT null,
+    /*IdDirector int not null,
     IdCountry int,
     Earnings decimal(15 , 2 ),
     Budget decimal(15 , 2 ),
     IdClasification int,
-    IsPlaying boolean,
+    IsPlaying boolean,*/
     constraint Pk_Movies primary key (IdMovie),
-    constraint Fk_Director foreign key (IdDirector)
+   /* constraint Fk_Director foreign key (IdDirector)
         references Directors (IdDirector),
     constraint Fk_Country foreign key (IdCountry)
         references Countries (IdCountry),
     constraint Fk_Clasification foreign key (IdClasification)
-        references Clasifications (IdClasification)
+        references Clasifications (IdClasification)*/
 );
 
 create table Rooms (
