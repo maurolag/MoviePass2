@@ -31,8 +31,13 @@ class RegisterController extends BaseController
 
             try {
                 $password = BaseController::Hash($password); //hashing password
-                $_SESSION['User'] = $this->userDAO->Register(new User($email, $user, $password, $birthdate, $gender));
-                $_SESSION['isLoged'] = true;
+                $selectedUser = $this->userDAO->Register(new User($email, $user, $password, $birthdate, $gender));
+
+                if ($selectedUser != null) {
+                    $_SESSION['User'] = $selectedUser[0];
+                    $_SESSION['isLogged'] = true;
+                }                
+
                 $this->ShowHomeView();
             } catch (Exception $e) {
                 $this->View();

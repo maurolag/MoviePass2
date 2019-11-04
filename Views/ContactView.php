@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-row justify-content-center">
                         <div class="form-group col-md-6">
-                            <label for="inputDescripcion"><i style="color: red;">&#42&nbsp</i>Descripcion</label>
+                            <label for="inputDescripcion"><i style="color: red;">&#42&nbsp</i>Descripción</label>
                             <textarea rows="4" cols="50" type="text" class="form-control" id="inputDescripcion"
                                 placeholder="Descripcion" name="Description"></textarea>
                         </div>
@@ -50,8 +50,8 @@
                         <div class="form-group col-md-6">
                             <button type="submit" class="btn btn-success btn-block"><i
                                     class="fas fa-save"></i>&nbspEnviar</button>
-                            <button type="button" class="btn btn-primary btn-block"><i
-                                    class="fas fa-arrow-left"></i>&nbspVolver</button>
+                            <a href="<?php echo FRONT_ROOT. "Home/View"?>" type="button" class="btn btn-primary btn-block"><i
+                                    class="fas fa-arrow-left"></i>&nbspVolver</a>
                         </div>
                     </div>
                 </form>

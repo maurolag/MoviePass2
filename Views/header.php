@@ -12,10 +12,10 @@
      <script src="<?php echo JS_PATH ?>scripts.js"></script>
      <!-- Bootstrap CSS -->
      <link href="https://fonts.googleapis.com/css?family=Montserrat|Muli&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH ?>bootstrap.min.css">
      <link rel="stylesheet" type="text/css" href="<?php echo CSS_PATH ?>estilos.css">
+     <link rel="icon" href="<?php echo FRONT_ROOT.VIEWS_PATH. "img/LogoMoviePass.svg"?>" type="image/x-icon">
 
      <title>MoviePass</title>
 </head>

@@ -1,11 +1,12 @@
 <!-- NavBar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <div class="collapse navbar-collapse" id="navbarToggler">
         <!-- Titulo con logo -->
         <a class="navbar-brand " href="<?php echo FRONT_ROOT?>Home/View">
+          <img src="<?php echo FRONT_ROOT.VIEWS_PATH. "img/LogoMoviePass.svg"?>" width="30" height="30">
             MoviePass
         </a>
 
@@ -15,10 +16,10 @@
             <a class="nav-link" href=<?php echo FRONT_ROOT. "Home/View"?>><i class="fas fa-home"></i>&nbspInicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-film"></i>&nbspCartelera</a>
+            <a class="nav-link" href=<?php echo FRONT_ROOT. "Movies/ShowDataBaseMovies"?>><i class="fas fa-film"></i>&nbspCartelera</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" href=<?php echo FRONT_ROOT. "Contact/View"?> tabindex="-1" aria-disabled="true"><i class="fas fa-id-card"></i>&nbspContacto</a>
+            <a class="nav-link" href=<?php echo FRONT_ROOT. "Contact/View"?> tabindex="-1" aria-disabled="true"><i class="fas fa-id-card"></i>&nbspContacto</a>
           </li>
         </ul>
 
@@ -31,11 +32,11 @@
                     <img src="'; 
               echo  FRONT_ROOT.VIEWS_PATH.'img/profileej.png" width="30" height="30" class="d-inline-block align-top">
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">';echo $_SESSION['User']['UserName'] . '</a>
-                      <div class="dropdown-menu dropdown-menu-right">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">';echo $_SESSION['User']['UserName'] . '</a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="';echo FRONT_ROOT. 'Profile/View"><i class="fas fa-user-alt"></i>&nbspMi Perfil</a>
                         <a class="dropdown-item" href="';echo FRONT_ROOT. 'Tickets/View"><i class="fas fa-ticket-alt"></i>&nbspMis Tickets</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-check-square"></i>&nbspCompras Previas</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-check-square"></i>Compras Previas</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="';echo FRONT_ROOT. 'Login/Logout"><i class="fas fa-sign-out-alt"></i>&nbspCerrar Sesión</a>
                       </div>

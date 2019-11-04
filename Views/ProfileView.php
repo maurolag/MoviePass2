@@ -28,10 +28,10 @@ use DAO\Gender as Gender;
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputNombre"><i style="color: red;">&#42&nbsp</i>Nombre</label>
-                            <input type="text" name="UserName" value=<?php echo ($_SESSION['User']['UserName']) ?> class="form-control" id="inputNombre" placeholder="Nombre">
+                            <input type="text" name="UserName" value=<?php echo ($_SESSION['User']['UserName']) ?> class="form-control" id="inputNombre" placeholder="Nombre" required>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputPais">Pais</label>
                             <select id="inputPais" class="form-control">
@@ -53,11 +53,11 @@ use DAO\Gender as Gender;
                                 <option>...</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputDate"><i style="color: red;">&#42&nbsp</i>Fecha de Nacimiento</label>
-                            <input type="date" name="BirthDate" value=<?php echo ($_SESSION['User']['Birthdate']) ?> class="form-control" id="inputDate" placeholder="Fecha de Nacimiento">
+                            <input type="date" name="BirthDate" value=<?php echo ($_SESSION['User']['Birthdate']) ?> class="form-control" id="inputDate" placeholder="Fecha de Nacimiento" required>
                         </div>
                     </div>
                     <div class="form-group">

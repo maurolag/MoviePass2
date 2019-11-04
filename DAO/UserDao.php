@@ -50,7 +50,7 @@ class UserDAO implements IUserDAO
         $user->setIsAdmin(false);
         $user->setChangedPassword(false);
 
-        return $user;
+        return $this->SearchUserByEmail($user->getEmail());
     }
 
     public function SearchUserByEmail($email)
