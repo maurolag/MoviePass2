@@ -13,12 +13,10 @@ use DAO\AddressDAO as AddressDAO;
 class LoginController extends BaseController
 {
     private $userDAO;
-    private $addressDAO;
 
     public function __construct()
     {
         $this->userDAO = new UserDAO();
-        $this->addressDAO = new AddressDAO();
     }
 
     #region: LOGIN

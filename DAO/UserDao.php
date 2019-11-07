@@ -6,9 +6,7 @@ use Controllers\BaseController;
 use \Exception as Exception;
 use DAO\IUserDAO as IUserDAO;
 use Models\User as User;
-use Models\Address as Address;
 use DAO\Connection as Connection;
-use DAO\AddressDAO as AddressDAO;
 
 class UserDAO implements IUserDAO
 {
