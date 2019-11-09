@@ -5,9 +5,11 @@ use Models\Address as Address;
 use DAO\City as City;
 use DAO\UserDAO as UserDAO;
 use Models\User as User;
-require_once("BaseController.php");
+use Util\Validate as Validate;
+use Controllers\HomeController as HomeController;
 
-class ProfileController extends BaseController
+
+class ProfileController 
 {
     private $userDAO;
 
@@ -23,17 +25,17 @@ class ProfileController extends BaseController
     public function Index(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = new User($_SESSION['User']['Email'],
-                             $this->ValidateData($_POST["UserName"]),
+                             Validate :: ValidateData($_POST["UserName"]),
                              null,
-                             $this->ValidateData($_POST["BirthDate"]),
-                             $this->ValidateData($_POST["gender"]),
+                             Validate :: ValidateData($_POST["BirthDate"]),
+                             Validate :: ValidateData($_POST["gender"]),
                              $_SESSION['User']['IdAddress']);
 
             try {
                 $result = $this->userDAO->UpdateUser($user);
                 $_SESSION['User'] = $result[0];
                 $_SESSION['isLoged'] = true;
-                $this->ShowHomeView();
+                HomeController :: Index();
             } catch (Exception $e) {
                 $this->View();
             }
