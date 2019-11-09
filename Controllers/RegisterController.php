@@ -2,13 +2,15 @@
 
 namespace Controllers;
 
-require_once("BaseController.php");
 
 use DAO\UserDAO as UserDAO;
 use Exception;
 use Models\User as User;
+use Util\Validate as Validate;
+use Util\Hash as Hash;
+use Controllers\HomeController as HomeController;
 
-class RegisterController extends BaseController
+class RegisterController 
 {
     private $userDAO;
 
@@ -20,17 +22,17 @@ class RegisterController extends BaseController
     public function Index()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = $this->ValidateData($_POST["email"]);
-            $user = $this->ValidateData($_POST["user"]);
-            $password = $this->ValidateData($_POST["password"]);
-            $passwordConfirmed = $this->ValidateData($_POST["passwordConfirmed"]);
-            $birthdate = $this->ValidateData($_POST["birthdate"]);
-            $gender = $this->ValidateData($_POST["gender"]);
+            $email = Validate :: ValidateData($_POST["email"]);
+            $user = Validate :: ValidateData($_POST["user"]);
+            $password = Validate :: ValidateData($_POST["password"]);
+            $passwordConfirmed = Validate :: ValidateData($_POST["passwordConfirmed"]);
+            $birthdate = Validate :: ValidateData($_POST["birthdate"]);
+            $gender = Validate :: ValidateData($_POST["gender"]);
 
             $this->ValidateRegister($email, $user, $password, $passwordConfirmed, $birthdate);
 
             try {
-                $password = BaseController::Hash($password); //hashing password
+                $password = Hash::Hashing($password); //hashing password
                 $selectedUser = $this->userDAO->Register(new User($email, $user, $password, $birthdate, $gender));
 
                 if ($selectedUser != null) {
@@ -38,7 +40,7 @@ class RegisterController extends BaseController
                     $_SESSION['isLogged'] = true;
                 }                
 
-                $this->ShowHomeView();
+                HomeController :: Index();
             } catch (Exception $e) {
                 $this->View();
             }

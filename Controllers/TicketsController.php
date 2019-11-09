@@ -1,11 +1,11 @@
 <?php
 
 namespace Controllers;
-require_once("BaseController.php");
+
 
 use DAO\TicketsDAO as TicketsDAO;
 
-class TicketsController extends BaseController
+class TicketsController 
 {
     private $ticketDAO;
 

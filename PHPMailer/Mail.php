@@ -4,7 +4,7 @@ require_once 'PHPMailer.php';
 require_once 'SMTP.php';
 require_once 'Exception.php';
 
-use Controllers\BaseController as BaseController;
+use Util\Random as Random;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class Mail
@@ -32,7 +32,7 @@ class Mail
     public static function SendConfirmationCode($name, $destinationMail)
     {
         $mail = InitEmail($destinationMail);
-        $confirmationCode = BaseController::CreateRandomNumber(20);
+        $confirmationCode = Random :: CreateRandomNumber(20);
         
         $mail->Subject = 'Bienvenido a MoviePass ' . $name . '!';
         $mail->Body = 'Codigo: ' . $confirmationCode;

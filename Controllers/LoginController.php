@@ -2,15 +2,18 @@
 
 namespace Controllers;
 
-require_once("BaseController.php");
+
 
 use DAO\UserDAO as UserDAO;
 use Exception;
 use PHPMailer\Mail as Mail;
 use Models\User as User;
 use DAO\AddressDAO as AddressDAO;
+use Util\Validate as Validate;
+use Util\Hash as Hash;
+use Util\Random as Random;
 
-class LoginController extends BaseController
+class LoginController
 {
     private $userDAO;
 
@@ -23,17 +26,17 @@ class LoginController extends BaseController
     public function Index()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $user = $this->ValidateData($_POST["user"]);
-            $password = $this->ValidateData($_POST["pass"]);
+            $user =Validate :: ValidateData($_POST["user"]);
+            $password =Validate :: ValidateData($_POST["pass"]);
 
             try {
-                $password = BaseController::Hash($password);
+                $password = Hash :: Hashing($password);
                 $selectedUser = $this->userDAO->LogIn($user, $password);
 
                 if ($selectedUser != null) {
                     $_SESSION['User'] = $selectedUser[0];                  
                     $_SESSION['isLogged'] = true;
-                    $this->ShowHomeView();
+                    HomeController :: Index();
                 } else {
                     $this->View("Email o contraseña incorrecta");
                 }
@@ -57,12 +60,12 @@ class LoginController extends BaseController
 
     public function RecoverPassword()
     {
-        $email = $this->ValidateData($_POST["email"]);
+        $email =Validate :: ValidateData($_POST["email"]);
 
         try {
             $selectedUser = new User(null, null, null, null, null,null);
             $selectedUser = $this->userDAO->SearchUserByEmail($email);
-            $newPassword = $this->CreateRandomNumber(10);
+            $newPassword = Random :: CreateRandomNumber(10);
 
             if ($selectedUser != null) {
                 if (Mail::SendNewPassword($email, $selectedUser[0]["UserName"], $newPassword)) {

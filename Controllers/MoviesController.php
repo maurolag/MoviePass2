@@ -6,11 +6,10 @@ use DAO\MoviesDAO as MoviesDAO;
 use Models\Movies as Movies;
 use Exception;
 use API\IMDBController as IMDBController;
+use Utilities\ApiResponse;
 
 
-require_once("BaseController.php");
-
-class MoviesController extends BaseController
+class MoviesController 
 {
 
 	private $moviesDao;
@@ -35,12 +34,12 @@ class MoviesController extends BaseController
     
     public function GetNowPlayingMoviesFromApi()
     {
-        return $this->HomologatesApiResponse('/movie/now_playing');
+        return ApiResponse::HomologatesApiResponse('/movie/now_playing');
     }
 
     public function GetPosterFromApi($movieIdIMDB)
     {
-        $respuesta = $this->HomologatesApiResponse('/movie/' . $movieIdIMDB. '/images');
+        $respuesta = ApiResponse::HomologatesApiResponse('/movie/' . $movieIdIMDB. '/images');
 		return IMG_LINK . $respuesta['posters'][0]['file_path'];
     }
 
@@ -52,7 +51,7 @@ class MoviesController extends BaseController
 
 		$apiMovie=array();
 
-		$arrayToDecode = $this->HomologatesApiResponse('/movie/now_playing');
+		$arrayToDecode = ApiResponse::HomologatesApiResponse('/movie/now_playing');
 
 		foreach ($arrayToDecode["results"] as $valuesArray) 
 		{
